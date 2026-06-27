@@ -3,6 +3,7 @@ from routers import company, job
 from database import Base, engine
 from models.company import Company
 from models.job import Job
+from models import company as company_model, job as job_model
 
 app=FastAPI()
 print("engine is :",engine)
