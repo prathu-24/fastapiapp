@@ -1,23 +1,28 @@
 from fastapi import FastAPI
-from routers import company,job
+from routers import company, job
+from database import Base, engine
+from models.company import Company
+from models.job import Job
 
+app=FastAPI()
+print("engine is :",engine)
 
-app = FastAPI()
+Base.metadata.create_all(bind=engine)
 
 app.include_router(company.router)
 app.include_router(job.router)
 
 @app.get("/")
 def read_root():
-    return {"Hello":"world"}
+    return{ "Hello"  : "World"}
+
 
 @app.get("/about")
 def read_about():
-    return {"about": "This is about page"}
+    return {"About": "This is about page."}
+
 
 
 @app.get("/contact")
-def read_about():
-    return {"about": "This is about contact"}
-
-
+def read_contact():
+    return {"Contact": "This is contact page."}
