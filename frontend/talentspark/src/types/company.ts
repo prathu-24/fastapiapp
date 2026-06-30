@@ -9,3 +9,4 @@ interface Company{
 
 }
 export type {Company}
+

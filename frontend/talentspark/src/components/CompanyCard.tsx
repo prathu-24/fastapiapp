@@ -1,34 +1,36 @@
+
 import type { Company } from "../types/company";
 
-interface CompanyCardProps {
-  company: Company;
+type Props={
+    companies: Company[];
 }
 
-function CompanyCard({ company }: CompanyCardProps) {
-  return (
-    <div
-      style={{
-        border: "1px solid gray",
-        margin: "10px",
-        padding: "10px",
-        borderRadius: "8px",
-      }}
-    >
-      <h2>{company.name}</h2>
+function CompanyCard({
+     companies }: Props ) {
+    // const [companies, setCompanies] = useState<Company[]>([]);
 
-      <p>
-        <strong>Email:</strong> {company.email}
-      </p>
+    // async function fetchCompanies() {
+    //     const companies = await getCompanies();
+    //     setCompanies(companies);
+    // }
 
-      <p>
-        <strong>Phone:</strong> {company.phone}
-      </p>
+    // useEffect(() => {
+    //     fetchCompanies();
+    // }, []);
 
-      <p>
-        <strong>Location:</strong> {company.location}
-      </p>
+    return (
+    <div>
+        {companies.map((company) => (
+            <div key={company.id}>
+                <h1>{company.name}</h1>
+                <p>Email: {company.email}</p>
+                <p>Phone: {company.phone}</p>
+                <p>Location: {company.location}</p>
+                <hr></hr>
+            </div>
+        ))}
     </div>
-  );
+)
 }
 
 export default CompanyCard;
