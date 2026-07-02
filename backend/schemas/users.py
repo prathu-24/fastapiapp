@@ -17,3 +17,9 @@ class UserResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class UserUpdate(UserBase):
+    id: int
+
+    class Config:
+        from_attributes = True
